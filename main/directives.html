@@ -1,0 +1,33 @@
+<html>
+
+    <body>
+        <div id="app">
+            
+            <p> 
+                <a :href="url"> google </a> 
+            </p>
+            
+            <form  action="" @submit.prevent> 
+                <button type="submit" @click="number++"> Increase </button>
+                <button type="submit" @click="number--"> Decrease </button>
+                <button type="submit" @click="number=0"> Reset </button>
+            </form>
+            
+            <h2> {{ number }} </h2>
+        </div>
+    </body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"> </script>
+    <script> 
+        var app = new Vue({
+            el: '#app',
+            data: {
+                dynamicId: 20,
+                number: 0,
+                url: "https://google.com"
+            }
+        });
+    </script>
+    
+        
+</html>

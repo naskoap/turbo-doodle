@@ -1,0 +1,22 @@
+<html>
+
+    <body>
+        <div id="app">
+            <a :href="url"> google </a>
+            <h1 :data="dynamicId"> {{ dynamicId }} </h1>
+        </div>
+    </body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"> </script>
+    <script> 
+        var app = new Vue({
+            el: '#app',
+            data: {
+                dynamicId: 20,
+                url: "https://google.com"
+            }
+        });
+    </script>
+    
+        
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+    <div class="container">
+
+   
+       <div id="app">
+
+
+           <form action="">
+
+               <fieldset class="form-group">
+                   <legend>Options</legend>
+                   <div class="form-check">
+                       <label class="form-check-label">
+                           <input v-model="options"  type="checkbox" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="jam" checked>
+                           Jam  
+                       </label>
+                   </div>
+                   <div class="form-check">
+                       <label class="form-check-label">
+                           <input v-model="options"   type="checkbox" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="jelly">
+                           Jelly
+                       </label>
+                   </div>
+                   <div class="form-check">
+                       <label class="form-check-label">
+                           <input v-model="options"  type="checkbox" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="confiture">
+                           Confiture
+                       </label>
+                   </div>
+               </fieldset>
+               <p> You selected:</p>
+               <div class="col-sm-6">
+                    <input v-model="options.join(', ')" type="text" class="form-control">
+               </div>
+
+           </form>
+
+
+       </div>
+
+    </div>
+
+   
+   
+ <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>  
+ 
+ 
+ 
+ <script>
+     
+     let vm = new Vue({
+         
+         el: '#app',
+         data: {
+             options: [],
+             message: ''
+
+         }
+           
+     })
+    
+</script>
+
+
+
+</body>
+</html>
