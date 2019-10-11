@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<div id="app">
+
+    <h1 :style="styleActive" v-if="isActive">{{ user }}</h1>
+    <h1 v-if="user === 'Jerry'"> Hey there {{ user }}</h1>
+    <h1 v-else> NO USER</h1>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+<script>
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            user: 'Jerry',
+            isActive: true,
+            styleActive: {
+                fontSize: '50px',
+                color: 'green'
+            }
+        }
+    })
+
+</script>
+
