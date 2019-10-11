@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<div id="app">
+
+    <button @click="increaseFont">Increase</button>
+    <button @click="decreaseFont">Decrease</button>
+    <button @click="reset">Reset</button>
+    <button @click="colorBlue">Color in blue</button>
+    <button @click="colorGreen">Color in green</button>
+    
+    <div :style="{color: color, fontSize: fontSize + 'px'}">{{message}}</div>
+    
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello',
+            fontSize: 50,
+            color: 'red'
+        },
+        methods: {
+            increaseFont: function() {
+                if(this.fontSize < 100)
+                    this.fontSize += 10;
+            },
+            decreaseFont: function() {
+                if(this.fontSize > 50)
+                    this.fontSize -= 10;
+            },
+            reset: function() {
+                this.fontSize = 50;
+                this.color = 'red';
+            },
+            colorBlue: function() {
+                this.color = 'blue';
+            },
+            colorGreen: function() {
+                this.color = 'green';
+            }
+        }
+
+    })
+
+    
+</script>
+
