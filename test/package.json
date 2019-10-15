@@ -1,0 +1,14 @@
+{
+  "name": "promises.js",
+  "version": "1.0.0",
+  "description": "Promises",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  }
+}
