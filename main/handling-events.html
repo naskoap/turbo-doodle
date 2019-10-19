@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Handle some events</title>
+
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css">
+  <style>
+    .is-crazy {
+      position: absolute;
+      transition: 0.3s ease all;
+    }
+  </style>
+
+  <!-- js -->
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <!-- our template -->
+  <section id="app" class="section container">
+
+    <h1 class="title"> Counter </h1>
+    <div class="box content has-text-centered">
+      <h2 class="title is-1"> {{ count }}</h2>
+      <a id="increment" class="button is-danger" @click="incrementCounter"> Increment </a>
+      <a id="reset" class="button is-info" @click="reset"> Reset </a>
+    </div>
+
+    <a class="button is-info is-crazy"
+       :style="buttonOffsets"
+       @mouseenter="moveButton">
+      Catch me if you can
+    </a>
+  </section>
+
+  <!-- javascript -->
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        count: 0,
+        buttonOffsets: {
+          top: null,
+          left: null
+        }
+      },
+      methods: {
+        incrementCounter: function() {
+          this.count++;
+        },
+        reset: function(){
+          this.count = 0;
+          this.moveButton();
+        },
+        moveButton: function(e) {
+          this.buttonOffsets = {
+            top: `${Math.random() * window.innerHeight}px`,
+            left: `${Math.random() * window.innerWidth}px`
+          };
+        }
+      }
+    });
+    // The old JS way
+    // let count = 0;
+    // const countPosition = document.querySelector('h2.title');
+    // const incrementButton = document.querySelector('#increment');
+    // const resetButton = document.querySelector('#reset');
+    //
+    // countPosition.innerText = count;
+    //
+    // incrementButton.addEventListener('click', incrementCounter);
+    // function incrementCounter( e ){
+    //   e.preventDefault();
+    //   count += 1;
+    //   countPosition.innerText = count;
+    // }
+    //
+    // resetButton.addEventListener('click', resetCounter);
+    // function resetCounter(e) {
+    //   e.preventDefault();
+    //   count = 0;
+    //   countPosition.innerText = count;
+    // }
+  </script>
+</body>
+</html>
