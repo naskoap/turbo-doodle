@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Learning Vue Like a Boss!</title>
+  <title>Dabbling with data</title>
 
   <!-- css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css">
@@ -66,10 +66,16 @@
 
     <!-- Inline Styles ========================================= -->
     <h2 class="title">Inline Styles</h2>
-
+    <div class="notification" v-bind:style="{ color: myColor, fontSize: mySize, backgroundColor: myBgColor }">
+      Another notification!
+    </div>
     <!-- Object Styles ========================================= -->
     <h2 class="title">Object Styles</h2>
-
+    <div class="message" :style="myMessageStyles">
+      <div class="message-body" :style="myMessageStyles">
+            Another notification!
+      </div>
+    </div>
   </section>
 
   <!-- our javascript -->
@@ -80,14 +86,25 @@
         //inline classes
         isSuccessful: false,
         isLarge: false,
+
         //object classes
         notificationStyles: {
           'is-success': true,
           'is-size-1': true
         },
+        myMessageStyles: {
+          color: 'EDE',
+          fontSize: '25px',
+          backgroundColor: '#ABA'
+        },
         //array classes
         color: '',
-        size: ''
+        size: '',
+
+        //inline styles
+        myColor: 'red',
+        mySize: '15px',
+        myBgColor: '#ABA'
       },
       methods: {
         celebrate: function() {
