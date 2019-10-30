@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Component basics</title>
+  <title>Registering & Organizing Components</title>
 
   <!-- css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css">
@@ -31,6 +31,8 @@
   <script src="https://unpkg.com/vue"></script>
   <!-- HTTP handling -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./js/gif-box.js"></script>
+  <script src="./js/gif-grid.js"></script>
 </head>
 <body>
 
@@ -41,8 +43,6 @@
     <input type="text" class="input" name="query" v-model="query" @keyup="searchGifs">
     <gif-grid :gifs="searchedGifs"> </gif-grid>
 
-
-
     <!-- TRENDING ======================================= -->
     <h2 class="title">Trending</h2>
     <gif-grid :gifs="trendingGifs"> </gif-grid>
@@ -50,39 +50,11 @@
   </section>
 
   <script>
-
-    Vue.component('gif-box', {
-      props: ['gif'],
-      template: `
-        <div class="gif-box">
-          <a :href="gif.url">
-            <img class="gif-image" :src="gif.images.original.url">
-          </a>
-          <a
-            class="gif-user"
-            v-if="gif.user"
-            :href="gif.user.profile_url">
-              <img :src="gif.user.avatar_url" height="40" width="40">
-              {{ gif.user.display_name }}
-          </a>
-        </div>
-      `
-    });
-
-    Vue.component('gif-grid', {
-      props: ['gifs'],
-      template: `
-      <div class="columns is-multiline" v-if="gifs">
-        <div class="column is-one-quarter" v-for="gif in gifs">
-          <gif-box :gif="gif"> </gif-box>
-        </div>
-      </div>
-      `
-    });
-
     const app = new Vue({
       el: '#app',
-
+      components: {
+        'gif-grid': GifGrid,
+      },
       data: {
         apiUrl: 'http://api.giphy.com/v1/gifs',
         apiKey: '80bfcbf357864cd18518c324f47a7098',
@@ -90,7 +62,6 @@
         trendingGifs: null,
         query: ''
       },
-
       methods: {
         fetchGifs: function() {
           const url = `${this.apiUrl}/trending?api_key=${this.apiKey}&limit=8`;
@@ -107,7 +78,6 @@
             .then(data => this.searchedGifs = data.data);
         }
       },
-
       created: function() {
         this.fetchGifs();
       }
