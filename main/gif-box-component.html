@@ -38,22 +38,14 @@
 
     <!-- SEARCH ========================================== -->
     <h2 class="title">Search</h2>
-
     <input type="text" class="input" name="query" v-model="query" @keyup="searchGifs">
+    <gif-grid :gifs="searchedGifs"> </gif-grid>
 
-    <div class="columns is-multiline" v-if="searchedGifs">
-      <div class="column is-one-quarter" v-for="gif in searchedGifs">
-        <gif-box :gif="gif"> </gif-box>
-      </div>
-    </div>
+
 
     <!-- TRENDING ======================================= -->
     <h2 class="title">Trending</h2>
-    <div class="columns is-multiline" v-if="trendingGifs">
-      <div class="column is-one-quarter" v-for="gif in trendingGifs">
-        <gif-box :gif="gif"> </gif-box>
-      </div>
-    </div>
+    <gif-grid :gifs="trendingGifs"> </gif-grid>
 
   </section>
 
@@ -74,6 +66,17 @@
               {{ gif.user.display_name }}
           </a>
         </div>
+      `
+    });
+
+    Vue.component('gif-grid', {
+      props: ['gifs'],
+      template: `
+      <div class="columns is-multiline" v-if="gifs">
+        <div class="column is-one-quarter" v-for="gif in gifs">
+          <gif-box :gif="gif"> </gif-box>
+        </div>
+      </div>
       `
     });
 
