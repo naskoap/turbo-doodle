@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Vue & Tabulator </title>
+  <link href="https://unpkg.com/tabulator-tables@4.4.3/dist/css/tabulator.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <script src="https://unpkg.com/vue"></script>
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.4.3/dist/js/tabulator.min.js"></script>
+  <script src="js/tabltr.js"> </script>
+</head>
+<body>
+
+  <section id="app" class="section container">
+    <tabltr> </tabltr>
+  </section>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      components: {
+        'tabltr': Tabltr
+      }
+    });
+  </script>
+
+</body>
+</html>
