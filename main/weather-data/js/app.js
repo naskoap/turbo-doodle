@@ -2,27 +2,28 @@ const app = new Vue({
     el: '#app',
     data: {
       greeting: 'Welcome to the mini weather app!',
-      apiUrl: 'http://api.openweathermap.org/data/2.5/weather',
-      apiKey: secret,
+      apiUrl: 'http://api.openweathermap.org/data/2.5/group',
+      apiKey: secret, //get apiKey from https://openweathermap.org/appid#get
       system: 'metric',
-      city: 'new york',
-      weatherInfo: null
+      city: ['727011', '5809844', '4650946', '5128862', '4984500'], //Sofia, Seattle, Portland, Norfolk, Atlanta
+      weatherInfo: []
     },
     methods: {
       fetchWeatherData: function() {
-        const url = `${this.apiUrl}?q=${this.city}&units=${this.system}&appid=${this.apiKey}`;
+        const url = `${this.apiUrl}?id=${this.city}&units=${this.system}&appid=${this.apiKey}`;
         const weather = []; //store weather points of interest for each city
         //HTTP handling
         fetch(url)
           .then((resp) => resp.json()) //transform the data into json
           .then(function(data) {
-            const poi = {
-                temperature: data.main.temp, pressure: data.main.pressure,
-                humidity: data.main.humidity, temp_max: data.main.temp_max,
-                temp_min: data.main.temp_min, city: data.name
-            };
-            weather.push(poi);
-            console.log(weather);
+            for(i=0; i<data.list.length; i++) {
+              let poi = {
+                  temperature: data.list[i].main.temp, pressure: data.list[i].main.pressure,
+                  humidity: data.list[i].main.humidity, temp_max: data.list[i].main.temp_max,
+                  temp_min: data.list[i].main.temp_min, city: data.list[i].name
+              };
+              weather.push(poi);
+            }
           })
           .catch(function(error) {
             console.log(error);
