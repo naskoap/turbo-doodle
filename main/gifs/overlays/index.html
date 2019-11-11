@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Real data with Vue</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="../apiKey.js"> </script>
+</head>
+<body>
+
+  <section id="app" class="section container">
+    <div class="columns is-multiline" v-if="gifs">
+      <div class="column is-one-quarter" v-for="gif in gifs">
+        <div class="gif-box">
+          <a :href="gif.url">
+            <img class="gif-image" :src="gif.images.original.url">
+          </a>
+          <a class="gif-user"
+             v-if="gif.user"
+             :href="gif.user.profile_url">
+            <img :src="gif.user.avatar_url" height="40" width="40">
+            {{ gif.user.display_name }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/app.js"> </script>
+
+</body>
+</html>

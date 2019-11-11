@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registering & Organizing Components</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="js/gif-box.js"></script>
+  <script src="js/gif-grid.js"></script>
+  <script src="../apiKey.js"> </script>
+</head>
+<body>
+
+  <section id="app" class="section container">
+
+    <!-- SEARCH ========================================== -->
+    <h2 class="title">Search</h2>
+    <input type="text" class="input" name="query" v-model="query" @keyup="searchGifs">
+    <gif-grid :gifs="searchedGifs"> </gif-grid>
+
+    <!-- TRENDING ======================================= -->
+    <h2 class="title">Trending</h2>
+    <gif-grid :gifs="trendingGifs"> </gif-grid>
+
+  </section>
+
+  <script src="js/app.js"> </script>
+
+</body>
+</html>
