@@ -4,37 +4,13 @@
   <meta charset="UTF-8">
   <title>Searching through giphy gifs</title>
 
-  <!-- css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css">
-  <style>
+  <link rel="stylesheet" href="css/styles.css">
 
-    input[name=query] {
-      margin-bottom: 30px;
-    }
-
-    .gif-box {
-      position: relative;
-      background: #333;
-    }
-    .gif-user   {
-      display: flex;
-      align-items: center;
-      position: absolute;
-      left: 15px;
-      bottom: 15px;
-    }
-    .gif-user img {
-      margin-right: 8px;
-    }
-  </style>
-
-  <!-- js -->
   <script src="https://unpkg.com/vue"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="../apiKey.js"></script>
 </head>
 <body>
-
-
 
   <section id="app" class="section container">
     <!--SEARCH -->
@@ -78,43 +54,7 @@
 
   </section>
 
-  <!-- our javascript -->
-  <script>
+  <script src="js/app.js"> </script>
 
-    const app = new Vue({
-      el: '#app',
-
-      data: {
-        // test giphy api key
-        // if the usage limit has been hit, visit https://developers.giphy.com to get a new one
-        // 80bfcbf357864cd18518c324f47a7098
-        apiUrl: 'http://api.giphy.com/v1/gifs',
-        apiKey: '80bfcbf357864cd18518c324f47a7098',
-        trendingGifs: null,
-        searchedGifs: null,
-        query: ''
-      },
-
-      methods: {
-        fetchGifs: function() {
-          const url = `${this.apiUrl}/trending?api_key=${this.apiKey}&limit=5`;
-          fetch(url)
-            .then(response => response.json())
-            .then(data => this.trendingGifs = data.data);
-        },
-        searchGifs: function() {
-          const url = `${this.apiUrl}/search?api_key=${this.apiKey}&q=${this.query}&limit=5`;
-          fetch(url)
-            .then(response => response.json())
-            .then(data => this.searchedGifs = data.data)
-
-        }
-      },
-
-      created: function() {
-        this.fetchGifs();
-      }
-    });
-  </script>
 </body>
 </html>

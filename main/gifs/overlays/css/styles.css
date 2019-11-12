@@ -1,0 +1,16 @@
+.gif-box {
+  position: relative;
+  background: #123;
+}
+
+.gif-user {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+}
+
+gif-user img {
+  margin-right: 8px;
+}
