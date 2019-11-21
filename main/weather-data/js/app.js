@@ -10,8 +10,8 @@ const app = new Vue({
     },
     methods: {
       fetchWeatherData: function() {
-        const url = `${this.apiUrl}?id=${this.city}&units=${this.system}&appid=${this.apiKey}`;
-        const weather = []; //store weather points of interest for each city
+        const url = `${this.apiUrl}?id=${this.city}&units=${this.system}&appid=${this.apiKey}`,
+              weather = [];
         //HTTP handling
         fetch(url)
           .then((resp) => resp.json()) //transform the data into json
