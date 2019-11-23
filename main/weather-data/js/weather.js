@@ -19,13 +19,13 @@ const Weather = {
   },
   methods: {
     fetchWeatherData: function() {
-      const url = `${this.apiUrl}?id=${this.city}&units=${this.system}&appid=${this.apiKey}`;
-      const weather = []; //store weather points of interest for each city
+      const url = `${this.apiUrl}?id=${this.city}&units=${this.system}&appid=${this.apiKey}`,
+            weather = []; //store weather points of interest for each city
       //HTTP handling
       fetch(url)
         .then((resp) => resp.json()) //transform the data into json
         .then(function(data) {
-          for(i=0; i<data.list.length; i++) { //iterate through list of cities
+          for(i=0; i<data.list.length; i++) {
             let poi = {
                 temp: data.list[i].main.temp, pressure: data.list[i].main.pressure,
                 humidity: data.list[i].main.humidity, temp_max: data.list[i].main.temp_max,
